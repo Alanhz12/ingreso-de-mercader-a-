@@ -174,6 +174,62 @@ document.getElementById('descargarPDF').addEventListener('click', function () {
   guardarPDF();
 });
 
+// Función para filtrar registros por fecha
+function filtrarPorFecha(fecha) {
+  const tbody = document.getElementById('tablaRegistros').getElementsByTagName('tbody')[0];
+  const datos = JSON.parse(localStorage.getItem(fechaActual)) || [];
+  tbody.innerHTML = ''; // Limpiar la tabla antes de cargar los datos filtrados
+
+  // Filtrar los registros que coincidan con la fecha
+  const registrosFiltrados = datos.filter((dato) => dato.fecha === fecha);
+
+  if (registrosFiltrados.length === 0) {
+    // Mostrar un mensaje si no hay registros
+    const filaVacia = tbody.insertRow();
+    const celdaVacia = filaVacia.insertCell(0);
+    celdaVacia.colSpan = 6;
+    celdaVacia.textContent = 'No hay registros para esta fecha.';
+    celdaVacia.style.textAlign = 'center';
+    celdaVacia.style.color = '#888';
+  } else {
+    // Mostrar los registros filtrados
+    registrosFiltrados.forEach((dato, index) => {
+      const nuevaFila = tbody.insertRow();
+      nuevaFila.insertCell(0).textContent = dato.fecha;
+      nuevaFila.insertCell(1).textContent = dato.envia;
+      nuevaFila.insertCell(2).textContent = dato.recibe;
+      nuevaFila.insertCell(3).textContent = dato.bultos;
+      nuevaFila.insertCell(4).textContent = dato.palets;
+
+      // Celda para el botón de eliminar
+      const celdaAcciones = nuevaFila.insertCell(5);
+      const botonEliminar = document.createElement('button');
+      botonEliminar.textContent = 'Eliminar';
+      botonEliminar.classList.add('eliminar-btn');
+      botonEliminar.addEventListener('click', () => eliminarRegistro(index));
+      celdaAcciones.appendChild(botonEliminar);
+    });
+  }
+}
+
+// Evento para el botón de búsqueda
+document.getElementById('buscarFecha').addEventListener('click', function () {
+  const fechaFiltro = document.getElementById('filtroFecha').value;
+
+  if (!fechaFiltro) {
+    alert('Por favor, selecciona una fecha para buscar.');
+    return;
+  }
+
+  filtrarPorFecha(fechaFiltro);
+});
+
+// Evento para limpiar el filtro
+document.getElementById('limpiarFiltro').addEventListener('click', function () {
+  document.getElementById('filtroFecha').value = ''; // Limpiar el campo de fecha
+  cargarDatos(); // Recargar todos los registros
+});
+
 // Verificar la fecha cada minuto
 setInterval(verificarFecha, 60000); // 60000 ms = 1 minuto
 

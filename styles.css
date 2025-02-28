@@ -1,4 +1,4 @@
-/* Fuente moderna */
+/* Fuente */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
@@ -91,10 +91,64 @@ button i {
   margin-right: 8px;
 }
 
+/* Filtro por fecha */
+.filtro-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filtro-container label {
+  font-size: 1rem;
+  color: #555;
+}
+
+.filtro-container input {
+  padding: 8px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.filtro-container input:focus {
+  border-color: #6a11cb;
+  outline: none;
+}
+
+.filtro-container button {
+  padding: 8px 12px;
+  background: linear-gradient(45deg, #2575fc, #6a11cb);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filtro-container button:hover {
+  background: linear-gradient(45deg, #1a5bbf, #4a0d9b);
+  transform: scale(1.05);
+}
+
+#limpiarFiltro {
+  background: linear-gradient(45deg, #ff4d4d, #cc0000);
+}
+
+#limpiarFiltro:hover {
+  background: linear-gradient(45deg, #cc0000, #990000);
+}
+
+/* Tabla */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
@@ -104,8 +158,8 @@ th, td {
 }
 
 th {
-  background-color: #f8f9fa;
-  color: #6a11cb;
+  background-color: #2575fc;
+  color: #fff;
   font-weight: 600;
 }
 
@@ -113,7 +167,7 @@ tr:hover {
   background-color: #f1f1f1;
 }
 
-/* Estilos para el botón de eliminar */
+/* Botón de eliminar */
 .eliminar-btn {
   background-color: #ff4d4d;
   color: white;
@@ -128,7 +182,7 @@ tr:hover {
   background-color: #cc0000;
 }
 
-/* Estilos responsivos */
+/* Responsivo */
 @media (max-width: 768px) {
   h1 {
     font-size: 1.8rem;

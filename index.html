@@ -9,6 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <!-- Incluir jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Incluir FontAwesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   <div class="container">
@@ -44,6 +46,18 @@
       </button>
     </form>
 
+    <!-- Filtro por fecha -->
+    <div class="filtro-container">
+      <label for="filtroFecha">Buscar por fecha:</label>
+      <input type="date" id="filtroFecha">
+      <button id="buscarFecha">
+        <i class="fas fa-search"></i> Buscar
+      </button>
+      <button id="limpiarFiltro">
+        <i class="fas fa-times"></i> Limpiar filtro
+      </button>
+    </div>
+
     <div class="table-header">
       <h2>Tabla de Registros</h2>
       <button id="descargarPDF">
@@ -59,7 +73,7 @@
           <th>Quién Recibe</th>
           <th>Bultos</th>
           <th>Palets</th>
-          <th>Acciones</th> <!-- Nueva columna para el botón de eliminar -->
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
