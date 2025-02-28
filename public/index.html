@@ -82,7 +82,32 @@
     </table>
   </div>
 
+  <!-- Importar Firebase y Firestore desde el CDN -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCIWXe35A9stt_72qRcYTTIq3HCCsIyHz4",
+      authDomain: "ingreso-de-mercaderia.firebaseapp.com",
+      databaseURL: "https://ingreso-de-mercaderia-default-rtdb.firebaseio.com",
+      projectId: "ingreso-de-mercaderia",
+      storageBucket: "ingreso-de-mercaderia.firebasestorage.app",
+      messagingSenderId: "571797344617",
+      appId: "1:571797344617:web:159653dae7a6140939adf8",
+      measurementId: "G-ZDVMY9N45S"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app); // Inicializar Firestore
+
+    // Exportar db para usarlo en script.js
+    window.db = db;
+  </script>
+
   <!-- Script principal -->
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
