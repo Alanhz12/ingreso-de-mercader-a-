@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicación de Registro</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Incluir html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <!-- Incluir jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Registro de Envíos</h1>
+    <form id="registroForm">
+      <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" required>
+      </div>
+
+      <div class="form-group">
+        <label for="envia">Quién Envía:</label>
+        <input type="text" id="envia" required>
+      </div>
+
+      <div class="form-group">
+        <label for="recibe">Quién Recibe:</label>
+        <input type="text" id="recibe" required>
+      </div>
+
+      <div class="form-group">
+        <label for="bultos">Bultos:</label>
+        <input type="number" id="bultos" required>
+      </div>
+
+      <div class="form-group">
+        <label for="palets">Palets:</label>
+        <input type="number" id="palets" required>
+      </div>
+
+      <button type="submit">
+        <i class="fas fa-plus"></i> Agregar a la Tabla
+      </button>
+    </form>
+
+    <div class="table-header">
+      <h2>Tabla de Registros</h2>
+      <button id="descargarPDF">
+        <i class="fas fa-download"></i> Descargar PDF
+      </button>
+    </div>
+
+    <table id="tablaRegistros">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Quién Envía</th>
+          <th>Quién Recibe</th>
+          <th>Bultos</th>
+          <th>Palets</th>
+          <th>Acciones</th> <!-- Nueva columna para el botón de eliminar -->
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se agregarán las filas dinámicamente -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+</body>
+</html>
